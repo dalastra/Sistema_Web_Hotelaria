@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Hóspedes</title>
+</head>
+<body>
+
+    <h1>Lista de Hóspedes</h1>
+
+    {% for hospede in hospedes %}
+
+        <hr>
+
+        <p>Nome: {{ hospede[1] }}</p>
+
+        <p>Email: {{ hospede[2] }}</p>
+
+        <p>Telefone: {{ hospede[3] }}</p>
+
+        <p>CPF: {{ hospede[4] }}</p>
+
+        <a href="/edit_hospede/{{ hospede[0] }}">
+            Editar
+        </a>
+
+        <br><br>
+
+        <a href="/delete_hospede/{{ hospede[0] }}">
+            Excluir
+        </a>
+
+    {% endfor %}
+
+</body>
+</html>

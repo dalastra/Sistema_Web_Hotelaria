@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Hóspede</title>
+</head>
+<body>
+
+    <h1>Editar Hóspede</h1>
+
+    <form action="/edit_hospede/{{ hospede[0] }}" method="post">
+
+        <input 
+            type="text"
+            name="nome"
+            value="{{ hospede[1] }}"
+        >
+
+        <br><br>
+
+        <input 
+            type="email" 
+            name="email"
+            value="{{ hospede[2] }}"
+        >
+
+        <br><br>
+
+        <input 
+            type="text" 
+            name="telefone"
+            value="{{ hospede[3] }}"
+        >
+
+        <br><br>
+
+        <input 
+            type="text" 
+            name="cpf"
+            value="{{ hospede[4] }}"
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Salvar
+        </button>
+
+    </form>
+
+</body>
+</html>
