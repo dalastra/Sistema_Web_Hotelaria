@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas</title>
+</head>
+<body>
+
+    <h1>Lista de Reservas</h1>
+
+    {% for reserva in reservas %}
+
+        <hr>
+
+        <p>Hóspede: {{ reserva[1] }}</p>
+
+        <p>Quarto: {{ reserva[2] }}</p>
+
+        <p>Entrada: {{ reserva[3] }}</p>
+
+        <p>Saída: {{ reserva[4] }}</p>
+
+        <a href="/delete_reserva/{{ reserva[0] }}">
+            Excluir
+        </a>
+
+    {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quartos</title>
+</head>
+<body>
+
+    <h1>Lista de Quartos</h1>
+
+    {% for quarto in quartos %}
+
+        <hr>
+
+        <p>Número: {{ quarto[1] }}</p>
+
+        <p>Tipo: {{ quarto[2] }}</p>
+
+        <p>Valor diária: {{ quarto[3] }}</p>
+
+        <p>Status: {{ quarto[4] }}</p>
+
+        <a href="/edit_quarto/{{ quarto[0] }}">
+            Editar
+        </a>
+
+        <br><br>
+
+        <a href="/delete_quarto/{{ quarto[0] }}">
+            Excluir
+        </a>
+
+    {% endfor %}
+
+</body>
+</html>

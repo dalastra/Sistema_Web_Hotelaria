@@ -89,3 +89,179 @@ def delete_hospede(id):
 
     cursor.close()
     conexao.close()
+
+def consulta_quartos():
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = "SELECT * FROM quartos"
+
+    cursor.execute(comando)
+
+    quartos = cursor.fetchall()
+
+    cursor.close()
+    conexao.close()
+
+    return quartos
+
+def add_quarto(numero, tipo, valor_diaria, status):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = """
+    INSERT INTO quartos
+    (numero, tipo, valor_diaria, status)
+    VALUES (%s, %s, %s, %s)
+    """
+
+    cursor.execute(
+        comando,
+        (numero, tipo, valor_diaria, status)
+    )
+
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+
+def consulta_quarto_id(id):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = "SELECT * FROM quartos WHERE id = %s"
+
+    cursor.execute(comando, (id,))
+
+    quarto = cursor.fetchone()
+
+    cursor.close()
+    conexao.close()
+
+    return quarto
+
+def update_quarto(id, numero, tipo, valor_diaria, status):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = """
+    UPDATE quartos
+    SET numero = %s,
+        tipo = %s,
+        valor_diaria = %s,
+        status = %s
+    WHERE id = %s
+    """
+
+    cursor.execute(
+        comando,
+        (numero, tipo, valor_diaria, status, id)
+    )
+
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+
+def delete_quarto(id):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = "DELETE FROM quartos WHERE id = %s"
+
+    cursor.execute(comando, (id,))
+
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+
+def consulta_reservas():
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = """
+    SELECT
+        reservas.id,
+        hospedes.nome,
+        quartos.numero,
+        reservas.data_entrada,
+        reservas.data_saida
+
+    FROM reservas
+
+    INNER JOIN hospedes
+        ON reservas.hospede_id = hospedes.id
+
+    INNER JOIN quartos
+        ON reservas.quarto_id = quartos.id
+    """
+
+    cursor.execute(comando)
+
+    reservas = cursor.fetchall()
+
+    cursor.close()
+    conexao.close()
+
+    return reservas
+
+def add_reserva(
+    hospede_id,
+    quarto_id,
+    data_entrada,
+    data_saida
+):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = """
+    INSERT INTO reservas
+    (hospede_id, quarto_id, data_entrada, data_saida)
+
+    VALUES (%s, %s, %s, %s)
+    """
+
+    cursor.execute(
+        comando,
+        (
+            hospede_id,
+            quarto_id,
+            data_entrada,
+            data_saida
+        )
+    )
+
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+
+def delete_reserva(id):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = "DELETE FROM reservas WHERE id = %s"
+
+    cursor.execute(comando, (id,))
+
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Quarto</title>
+</head>
+<body>
+
+    <h1>Novo Quarto</h1>
+
+    <form action="/add_quarto" method="post">
+
+        <input 
+            type="text"
+            name="numero"
+            placeholder="Número"
+        >
+
+        <br><br>
+
+        <input 
+            type="text"
+            name="tipo"
+            placeholder="Tipo"
+        >
+
+        <br><br>
+
+        <input 
+            type="number"
+            step="0.01"
+            name="valor_diaria"
+            placeholder="Valor diária"
+        >
+
+        <br><br>
+
+        <input 
+            type="text"
+            name="status"
+            placeholder="Status"
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Cadastrar
+        </button>
+
+    </form>
+
+</body>
+</html>
