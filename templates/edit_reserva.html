@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Reserva</title>
+</head>
+<body>
+
+    <h1>Editar Reserva</h1>
+
+    <form action="/edit_reserva/{{ reserva[0] }}" method="post">
+
+        <label>Hóspede</label>
+
+        <br>
+
+        <select name="hospede_id">
+
+            {% for hospede in hospedes %}
+
+                <option
+                    value="{{ hospede[0] }}"
+                    {% if hospede[0] == reserva[1] %}
+                        selected
+                    {% endif %}
+                >
+                    {{ hospede[1] }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+        <label>Quarto</label>
+
+        <br>
+
+        <select name="quarto_id">
+
+            {% for quarto in quartos %}
+
+                <option
+                    value="{{ quarto[0] }}"
+                    {% if quarto[0] == reserva[2] %}
+                        selected
+                    {% endif %}
+                >
+                    {{ quarto[1] }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+        <label>Data Entrada</label>
+
+        <br>
+
+        <input
+            type="date"
+            name="data_entrada"
+            value="{{ reserva[3] }}"
+        >
+
+        <br><br>
+
+        <label>Data Saída</label>
+
+        <br>
+
+        <input
+            type="date"
+            name="data_saida"
+            value="{{ reserva[4] }}"
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Salvar
+        </button>
+
+    </form>
+
+</body>
+</html>

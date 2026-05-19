@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Hóspedes</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="/hospedes">Hóspedes</a>
+
+        <a href="/quartos">Quartos</a>
+
+        <a href="/reservas">Reservas</a>
+
+    </nav>
+
+    <br><br>
+
     <h1>Lista de Hóspedes</h1>
+
+    <br>
+
+    <a href="/add_hospede">
+        Novo Hóspede
+    </a>
+
+    <br><br>
 
     {% for hospede in hospedes %}
 

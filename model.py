@@ -67,7 +67,13 @@ def update_hospede(id, nome, email, telefone, cpf):
 
     cursor.execute(
         comando,
-        (nome, email, telefone, cpf, id)
+        (
+            nome,
+            email,
+            telefone,
+            cpf,
+            id
+        )
     )
 
     conexao.commit()
@@ -89,7 +95,7 @@ def delete_hospede(id):
 
     cursor.close()
     conexao.close()
-
+    
 def consulta_quartos():
 
     conexao = conectar()
@@ -260,6 +266,98 @@ def delete_reserva(id):
     comando = "DELETE FROM reservas WHERE id = %s"
 
     cursor.execute(comando, (id,))
+
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+
+def consulta_reserva_id(id):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = """
+    SELECT
+        reservas.id,
+        hospedes.nome,
+        hospedes.email,
+        hospedes.telefone,
+        quartos.numero,
+        quartos.tipo,
+        quartos.valor_diaria,
+        reservas.data_entrada,
+        reservas.data_saida
+
+    FROM reservas
+
+    INNER JOIN hospedes
+        ON reservas.hospede_id = hospedes.id
+
+    INNER JOIN quartos
+        ON reservas.quarto_id = quartos.id
+
+    WHERE reservas.id = %s
+    """
+
+    cursor.execute(comando, (id,))
+
+    reserva = cursor.fetchone()
+
+    cursor.close()
+    conexao.close()
+
+    return reserva
+
+def consulta_reserva_id_edit(id):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = "SELECT * FROM reservas WHERE id = %s"
+
+    cursor.execute(comando, (id,))
+
+    reserva = cursor.fetchone()
+
+    cursor.close()
+    conexao.close()
+
+    return reserva
+
+def update_reserva(
+    id,
+    hospede_id,
+    quarto_id,
+    data_entrada,
+    data_saida
+):
+
+    conexao = conectar()
+
+    cursor = conexao.cursor()
+
+    comando = """
+    UPDATE reservas
+    SET hospede_id = %s,
+        quarto_id = %s,
+        data_entrada = %s,
+        data_saida = %s
+    WHERE id = %s
+    """
+
+    cursor.execute(
+        comando,
+        (
+            hospede_id,
+            quarto_id,
+            data_entrada,
+            data_saida,
+            id
+        )
+    )
 
     conexao.commit()
 

@@ -1,6 +1,7 @@
 from fastapi.responses import RedirectResponse
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from model import (
     consulta_hospedes,
     add_hospede,
@@ -14,9 +15,14 @@ from model import (
     delete_quarto,
     consulta_reservas,
     add_reserva,
-    delete_reserva
+    delete_reserva,
+    consulta_reserva_id,
+    consulta_reserva_id_edit,
+    update_reserva
 )
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
@@ -248,6 +254,60 @@ def salvar_reserva(
 def excluir_reserva(id: int):
 
     delete_reserva(id)
+
+    return RedirectResponse(
+        url="/reservas",
+        status_code=303
+    )
+
+@app.get("/reserva/{id}")
+def view_reserva(request: Request, id: int):
+
+    reserva = consulta_reserva_id(id)
+
+    return templates.TemplateResponse(
+        request=request,
+        name="view_reserva.html",
+        context={
+            "reserva": reserva
+        }
+    )
+
+@app.get("/edit_reserva/{id}")
+def edit_reserva(request: Request, id: int):
+
+    reserva = consulta_reserva_id_edit(id)
+
+    hospedes = consulta_hospedes()
+
+    quartos = consulta_quartos()
+
+    return templates.TemplateResponse(
+        request=request,
+        name="edit_reserva.html",
+        context={
+            "reserva": reserva,
+            "hospedes": hospedes,
+            "quartos": quartos
+        }
+    )
+
+@app.post("/edit_reserva/{id}")
+def salvar_edicao_reserva(
+    id: int,
+    hospede_id: int = Form(),
+    quarto_id: int = Form(),
+    data_entrada: str = Form(),
+    data_saida: str = Form()
+):
+
+    update_reserva(
+        id,
+        hospede_id,
+        quarto_id,
+        data_entrada,
+        data_saida
+    )
 
     return RedirectResponse(
         url="/reservas",
