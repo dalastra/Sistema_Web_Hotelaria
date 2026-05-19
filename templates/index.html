@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Hotelaria</title>
+
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
+
 <body>
+
     <div class="container">
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/hospedes">Hóspedes</a>
-    <a href="/quartos">Quartos</a>
-    <a href="/reservas">Reservas</a>
-</nav>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/hospedes">Hóspedes</a>
+            <a href="/quartos">Quartos</a>
+            <a href="/reservas">Reservas</a>
+        </nav>
 
-<section class="hero">
-    <h1>Sistema Premium de Hotelaria</h1>
-    <p>
-        Gerencie hóspedes, quartos e reservas em uma interface elegante,
-        moderna e totalmente profissional.
-    </p>
+        <section class="hero">
 
-    <div class="grid">
-        <div class="module">
-            <h3>Hóspedes</h3>
-            <p>Cadastre e gerencie clientes com praticidade.</p>
-        </div>
+            <h1>Sistema Premium de Hotelaria</h1>
 
-        <div class="module">
-            <h3>Quartos</h3>
-            <p>Controle disponibilidade, tipos e valores.</p>
-        </div>
+            <p>
+                Gerencie hóspedes, quartos e reservas em uma interface elegante,
+                moderna e totalmente profissional.
+            </p>
 
-        <div class="module">
-            <h3>Reservas</h3>
-            <p>Organize entradas, saídas e hospedagens.</p>
-        </div>
+            <div class="grid">
+
+                <div class="module">
+                    <h3>Quantidade de Hóspedes</h3>
+
+                    <h2>{{ total_hospedes }}</h2>
+
+                    <p>
+                        Total de hóspedes cadastrados no sistema.
+                    </p>
+                </div>
+
+                <div class="module">
+                    <h3>Quantidade de Quartos</h3>
+
+                    <h2>{{ total_quartos }}</h2>
+
+                    <p>
+                        Total de quartos disponíveis no hotel.
+                    </p>
+                </div>
+
+                <div class="module">
+                    <h3>Reservas Ativas</h3>
+
+                    <h2>{{ total_reservas }}</h2>
+
+                    <p>
+                        Reservas atualmente registradas no sistema.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
     </div>
-</section>
 
-    </div>
 </body>
+
 </html>

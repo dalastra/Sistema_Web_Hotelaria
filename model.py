@@ -371,3 +371,23 @@ def update_reserva(
 
     cursor.close()
     conexao.close()
+
+def total_hospedes():
+
+    hospedes = consulta_hospedes()
+
+    return len(hospedes)
+
+
+def total_quartos():
+
+    quartos = consulta_quartos()
+
+    return len(quartos)
+
+
+def total_reservas():
+
+    reservas = consulta_reservas()
+
+    return len(reservas)

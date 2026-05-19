@@ -18,7 +18,10 @@ from model import (
     delete_reserva,
     consulta_reserva_id,
     consulta_reserva_id_edit,
-    update_reserva
+    update_reserva,
+    total_hospedes,
+    total_quartos,
+    total_reservas
 )
 app = FastAPI()
 
@@ -29,9 +32,20 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/")
 def index(request: Request):
 
+    qtd_hospedes = total_hospedes()
+
+    qtd_quartos = total_quartos()
+
+    qtd_reservas = total_reservas()
+
     return templates.TemplateResponse(
         request=request,
-        name="index.html"
+        name="index.html",
+        context={
+            "total_hospedes": qtd_hospedes,
+            "total_quartos": qtd_quartos,
+            "total_reservas": qtd_reservas
+        }
     )
 
 @app.get("/hospedes")
