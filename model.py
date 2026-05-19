@@ -179,18 +179,26 @@ def update_quarto(id, numero, tipo, valor_diaria, status):
 
 def delete_quarto(id):
 
-    conexao = conectar()
+    try:
 
-    cursor = conexao.cursor()
+        conexao = conectar()
 
-    comando = "DELETE FROM quartos WHERE id = %s"
+        cursor = conexao.cursor()
 
-    cursor.execute(comando, (id,))
+        comando = "DELETE FROM quartos WHERE id = %s"
 
-    conexao.commit()
+        cursor.execute(comando, (id,))
 
-    cursor.close()
-    conexao.close()
+        conexao.commit()
+
+        cursor.close()
+        conexao.close()
+
+        return True
+
+    except:
+
+        return False
 
 def consulta_reservas():
 

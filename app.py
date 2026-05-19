@@ -194,12 +194,18 @@ def salvar_edicao_quarto(
 @app.get("/delete_quarto/{id}")
 def excluir_quarto(id: int):
 
-    delete_quarto(id)
+    resultado = delete_quarto(id)
 
-    return RedirectResponse(
-        url="/quartos",
-        status_code=303
-    )
+    if resultado:
+
+        return RedirectResponse(
+            url="/quartos",
+            status_code=303
+        )
+
+    return {
+        "erro": "Não é possível excluir um quarto com reservas."
+    }
 
 @app.get("/reservas")
 def reservas(request: Request):
