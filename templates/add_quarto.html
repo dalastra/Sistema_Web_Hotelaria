@@ -2,14 +2,17 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Novo Quarto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add_quarto</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+    <div class="container">
+
 
     <h1>Novo Quarto</h1>
 
-    <form action="/add_quarto" method="post">
+    <form class="card" action="/add_quarto" method="post">
 
         <input 
             type="text"
@@ -17,7 +20,7 @@
             placeholder="Número"
         >
 
-        <br><br>
+        
 
         <input 
             type="text"
@@ -25,7 +28,7 @@
             placeholder="Tipo"
         >
 
-        <br><br>
+        
 
         <input 
             type="number"
@@ -34,7 +37,7 @@
             placeholder="Valor diária"
         >
 
-        <br><br>
+        
 
         <input 
             type="text"
@@ -42,7 +45,7 @@
             placeholder="Status"
         >
 
-        <br><br>
+        
 
         <button type="submit">
             Cadastrar
@@ -50,5 +53,7 @@
 
     </form>
 
+
+    </div>
 </body>
 </html>

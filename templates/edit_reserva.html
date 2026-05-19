@@ -2,22 +2,25 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Reserva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit_reserva</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+    <div class="container">
+
 
     <h1>Editar Reserva</h1>
 
-    <form action="/edit_reserva/{{ reserva[0] }}" method="post">
+    <form class="card" action="/edit_reserva/{{ reserva[0] }}" method="post">
 
         <label>Hóspede</label>
 
-        <br>
+        
 
         <select name="hospede_id">
 
-            {% for hospede in hospedes %}
+            <div class="card">{% for hospede in hospedes %}
 
                 <option
                     value="{{ hospede[0] }}"
@@ -28,19 +31,19 @@
                     {{ hospede[1] }}
                 </option>
 
-            {% endfor %}
+            {% endfor %}</div>
 
         </select>
 
-        <br><br>
+        
 
         <label>Quarto</label>
 
-        <br>
+        
 
         <select name="quarto_id">
 
-            {% for quarto in quartos %}
+            <div class="card">{% for quarto in quartos %}
 
                 <option
                     value="{{ quarto[0] }}"
@@ -51,15 +54,15 @@
                     {{ quarto[1] }}
                 </option>
 
-            {% endfor %}
+            {% endfor %}</div>
 
         </select>
 
-        <br><br>
+        
 
         <label>Data Entrada</label>
 
-        <br>
+        
 
         <input
             type="date"
@@ -67,11 +70,11 @@
             value="{{ reserva[3] }}"
         >
 
-        <br><br>
+        
 
         <label>Data Saída</label>
 
-        <br>
+        
 
         <input
             type="date"
@@ -79,7 +82,7 @@
             value="{{ reserva[4] }}"
         >
 
-        <br><br>
+        
 
         <button type="submit">
             Salvar
@@ -87,5 +90,7 @@
 
     </form>
 
+
+    </div>
 </body>
 </html>

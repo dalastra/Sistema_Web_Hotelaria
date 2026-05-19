@@ -2,14 +2,17 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Hóspede</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit_hospede</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+    <div class="container">
+
 
     <h1>Editar Hóspede</h1>
 
-    <form action="/edit_hospede/{{ hospede[0] }}" method="post">
+    <form class="card" action="/edit_hospede/{{ hospede[0] }}" method="post">
 
         <input 
             type="text"
@@ -17,7 +20,7 @@
             value="{{ hospede[1] }}"
         >
 
-        <br><br>
+        
 
         <input 
             type="email" 
@@ -25,7 +28,7 @@
             value="{{ hospede[2] }}"
         >
 
-        <br><br>
+        
 
         <input 
             type="text" 
@@ -33,7 +36,7 @@
             value="{{ hospede[3] }}"
         >
 
-        <br><br>
+        
 
         <input 
             type="text" 
@@ -41,7 +44,7 @@
             value="{{ hospede[4] }}"
         >
 
-        <br><br>
+        
 
         <button type="submit">
             Salvar
@@ -49,5 +52,7 @@
 
     </form>
 
+
+    </div>
 </body>
 </html>

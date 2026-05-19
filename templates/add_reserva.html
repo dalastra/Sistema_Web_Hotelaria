@@ -2,72 +2,75 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Nova Reserva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add_reserva</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+    <div class="container">
+
 
     <h1>Nova Reserva</h1>
 
-    <form action="/add_reserva" method="post">
+    <form class="card" action="/add_reserva" method="post">
 
         <label>Hóspede</label>
 
-        <br>
+        
 
         <select name="hospede_id">
 
-            {% for hospede in hospedes %}
+            <div class="card">{% for hospede in hospedes %}
 
                 <option value="{{ hospede[0] }}">
                     {{ hospede[1] }}
                 </option>
 
-            {% endfor %}
+            {% endfor %}</div>
 
         </select>
 
-        <br><br>
+        
 
         <label>Quarto</label>
 
-        <br>
+        
 
         <select name="quarto_id">
 
-            {% for quarto in quartos %}
+            <div class="card">{% for quarto in quartos %}
 
                 <option value="{{ quarto[0] }}">
                     {{ quarto[1] }}
                 </option>
 
-            {% endfor %}
+            {% endfor %}</div>
 
         </select>
 
-        <br><br>
+        
 
         <label>Data Entrada</label>
 
-        <br>
+        
 
         <input
             type="date"
             name="data_entrada"
         >
 
-        <br><br>
+        
 
         <label>Data Saída</label>
 
-        <br>
+        
 
         <input
             type="date"
             name="data_saida"
         >
 
-        <br><br>
+        
 
         <button type="submit">
             Reservar
@@ -75,5 +78,7 @@
 
         </form>
 
+
+    </div>
 </body>
 </html>
